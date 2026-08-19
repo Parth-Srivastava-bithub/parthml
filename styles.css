@@ -872,14 +872,14 @@ button {
    -------------------------------------------------------------------------- */
 .about-grid {
   display: grid;
-  grid-template-columns: 200px 1.2fr 0.8fr;
+  grid-template-columns: 250px 1.2fr 0.8fr;
   gap: 2.5rem;
   align-items: center;
 }
 
 .about-portrait-wrapper {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border-light);
@@ -900,7 +900,8 @@ body.dark-mode .about-portrait-wrapper {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
+  transform: scale(1.68);
+  transform-origin: center 26%;
   transition: var(--transition);
 }
 
@@ -911,7 +912,7 @@ body.dark-mode .about-portrait-wrapper {
 }
 
 .about-portrait-wrapper:hover .about-portrait-img {
-  transform: scale(1.04);
+  transform: scale(1.75);
 }
 
 .about-text {
