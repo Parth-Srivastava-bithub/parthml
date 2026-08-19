@@ -1,7 +1,9 @@
 /* ==========================================================================
-   Parth Srivastava - AI/ML Engineer & Researcher Portfolio
+   Parth Srivastava - AI/ML Engineer Portfolio
    Design System & Styles
    ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 /* --------------------------------------------------------------------------
    1. CSS Custom Properties / Design Tokens
@@ -32,7 +34,7 @@
   --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.08);
 
   /* Typography */
-  --font-heading: 'Newsreader', 'Playfair Display', Georgia, serif;
+  --font-heading: 'Newsreader', 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Fira Code', monospace;
 
@@ -467,22 +469,27 @@ button {
   gap: 1.5rem;
 }
 
-.social-item {
-  display: flex;
+.social-item,
+.social-item:link,
+.social-item:visited {
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
 }
 
 .social-item:hover {
-  color: var(--text-primary);
+  color: var(--accent-primary);
+  transform: translateY(-1px);
 }
 
 .social-item i {
   font-size: 1rem;
-  color: var(--text-primary);
+  color: var(--accent-primary);
 }
 
 /* Hero Canvas Right Side */

@@ -22,8 +22,10 @@ function initNetworkCanvas() {
 
   function resize() {
     const parent = canvas.parentElement;
-    width = canvas.width = parent.clientWidth;
-    height = canvas.height = parent.clientHeight;
+    if (!parent) return;
+    const rect = parent.getBoundingClientRect();
+    width = canvas.width = Math.max(rect.width || parent.clientWidth || 400, 280);
+    height = canvas.height = Math.max(rect.height || parent.clientHeight || 380, 280);
   }
 
   window.addEventListener('resize', () => {
@@ -133,6 +135,15 @@ function initNetworkCanvas() {
   resize();
   createParticles();
   animate();
+
+  setTimeout(() => {
+    resize();
+    createParticles();
+  }, 250);
+  setTimeout(() => {
+    resize();
+    createParticles();
+  }, 800);
 }
 
 /* --------------------------------------------------------------------------
