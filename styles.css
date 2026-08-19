@@ -1120,12 +1120,26 @@ body.dark-mode .about-portrait-wrapper {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+    justify-items: center;
+  }
+  .about-portrait-wrapper {
+    max-width: 210px;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto;
+  }
+  .about-portrait-img {
+    transform: scale(1.35);
+    transform-origin: center 25%;
+  }
+  .about-portrait-wrapper:hover .about-portrait-img {
+    transform: scale(1.42);
   }
   .about-stats {
     padding-left: 0;
     border-left: none;
     flex-direction: row;
     justify-content: space-between;
+    width: 100%;
   }
 }
 
@@ -1145,5 +1159,18 @@ body.dark-mode .about-portrait-wrapper {
   }
   .nav-menu {
     display: none;
+  }
+  .about-portrait-wrapper {
+    max-width: 190px;
+    aspect-ratio: 4 / 5;
+  }
+  .about-portrait-img {
+    transform: scale(1.35);
+    transform-origin: center 25%;
+  }
+  .about-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 }
