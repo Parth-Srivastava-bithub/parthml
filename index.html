@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parth Srivastava | AI/ML Engineer Portfolio</title>
-  <meta name="description" content="Portfolio of Parth Srivastava - AI/ML Engineer specializing in LLM Fine-Tuning, RAG, AI Agents, Synthetic Data, and vLLM Deployments.">
-  
+  <title>Parth Srivastava | AI/ML Engineer</title>
+  <meta name="description"
+    content="Personal website of Parth Srivastava - AI/ML Engineer specializing in LLM Fine-Tuning, RAG Systems, Voice AI Agents, and Production AI Deployments.">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <!-- Background Grid Effect -->
-  <div class="bg-grid"></div>
-
-  <!-- Navbar -->
+  <!-- Navigation -->
   <nav class="navbar">
     <div class="container nav-container">
-      <a href="#" class="nav-brand">
-        <div class="nav-logo-icon">PS</div>
-        <div class="nav-brand-text">Parth Srivastava</div>
-        <div class="nav-status">
-          <span class="status-dot"></span> Open to AI/ML Roles
-        </div>
+      <a href="#home" class="nav-brand">
+        <div class="nav-brand-logo">PS</div>
+        <span>Parth Srivastava</span>
       </a>
 
       <ul class="nav-menu">
-        <li><a href="#about" class="nav-link active">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#playground" class="nav-link">AI Playground</a></li>
-        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#playground" class="nav-link">Playground</a></li>
+        <div class="nav-indicator"></div>
       </ul>
 
       <div class="nav-actions">
-        <a href="agentic_ai_resume_parth.pdf" target="_blank" class="btn btn-outline btn-sm">
-          <i class="fa-solid fa-file-arrow-down"></i> Resume
-        </a>
-        <a href="mailto:parthsrivastava6112004@gmail.com" class="btn btn-primary btn-sm">
+        <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <a href="mailto:parthsrivastava6112004@gmail.com" class="btn btn-outline btn-sm">
           <i class="fa-solid fa-paper-plane"></i> Contact
         </a>
       </div>
@@ -54,295 +54,319 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="about" class="hero-section">
+  <section id="home" class="hero-section">
     <div class="container hero-grid">
       <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fa-solid fa-microchip"></i> AI/ML Engineer @ 4Way Technologies
-        </div>
-        
-        <h1 class="hero-title">
-          Engineering <span class="text-gradient">Production LLMs</span>, RAG & Autonomous Agents
-        </h1>
-        
+        <div class="hero-subhead">Hi, I'm</div>
+        <h1 class="hero-name">Parth Srivastava</h1>
+        <div class="hero-role">AI/ML Engineer</div>
+
         <p class="hero-description">
-          Specialized in fine-tuning open-source LLMs (Qwen, LLaMA), building enterprise RAG architectures with dynamic vector sync, synthetic data generation pipelines, and deploying high-throughput AI models via Docker & vLLM.
+          I build intelligent systems that learn, reason, and solve real-world problems.
         </p>
 
-        <div class="hero-cta">
-          <a href="#playground" class="btn btn-primary">
-            <i class="fa-solid fa-bolt"></i> Launch AI Simulator
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">
+            Explore My Work <i class="fa-solid fa-arrow-right"></i>
           </a>
-          <a href="#projects" class="btn btn-outline">
-            <i class="fa-solid fa-code-fork"></i> View Projects
+          <a href="agentic_ai_resume_parth.pdf" target="_blank" class="btn btn-outline">
+            Download Resume <i class="fa-solid fa-download"></i>
           </a>
-          <button id="copyEmailBtn" class="btn btn-outline">
-            <i class="fa-regular fa-copy"></i> Copy Email
-          </button>
         </div>
 
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-value">20+</span>
-            <span class="stat-label">AI Models Deployed</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">10K+</span>
-            <span class="stat-label">Daily ETL Records</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value">200+</span>
-            <span class="stat-label">Image Gen Users Served</span>
-          </div>
+        <div class="hero-socials">
+          <a href="https://github.com/Parth-Srivastava-bithub" target="_blank" class="social-item">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/parth-srivastava-dsuser/" target="_blank" class="social-item">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="mailto:parthsrivastava6112004@gmail.com" class="social-item">
+            <i class="fa-solid fa-envelope"></i> Email
+          </a>
+          <a href="https://huggingface.co/Yellowforesty" target="_blank" class="social-item">
+            <i class="fa-solid fa-cube"></i> Huggingface
+          </a>
         </div>
       </div>
 
-      <!-- Hero Interactive Terminal Window -->
-      <div class="terminal-window">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-          </div>
-          <div class="terminal-title">bash - parth@ai-workstation: ~/portfolio</div>
-          <div style="font-size: 0.75rem; color: #6b7280;"><i class="fa-solid fa-terminal"></i> Interactive</div>
-        </div>
-
-        <div class="terminal-body" id="terminalBody">
-          <div class="terminal-line"><span class="terminal-prompt">parth@ai-workstation:~$</span> initializing AI profile environment...</div>
-          <div class="terminal-line"><span class="terminal-success">[OK]</span> PyTorch, vLLM, LangGraph & Docker ready.</div>
-          <div class="terminal-line"><span class="terminal-prompt">parth@ai-workstation:~$</span> Click any quick command chip below to run real-time CLI actions:</div>
-        </div>
-
-        <div class="terminal-quick-cmds">
-          <button class="cmd-chip" data-cmd="fetch-profile"><i class="fa-solid fa-user"></i> fetch-profile</button>
-          <button class="cmd-chip" data-cmd="run-rag"><i class="fa-solid fa-database"></i> run-rag</button>
-          <button class="cmd-chip" data-cmd="fine-tune"><i class="fa-solid fa-sliders"></i> fine-tune</button>
-          <button class="cmd-chip" data-cmd="synthetic-data"><i class="fa-solid fa-diagram-project"></i> synthetic-data</button>
-          <button class="cmd-chip" data-cmd="metrics"><i class="fa-solid fa-chart-line"></i> metrics</button>
-          <button class="cmd-chip" data-cmd="clear"><i class="fa-solid fa-trash"></i> clear</button>
-        </div>
+      <!-- Right Side Abstract Network Canvas Visualization -->
+      <div class="hero-canvas-wrapper">
+        <canvas id="networkCanvas"></canvas>
       </div>
     </div>
   </section>
 
-  <!-- Skills Matrix Section -->
-  <section id="skills" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Technical Competencies</span>
-        <h2 class="section-title">Core Skills & Stack</h2>
-        <p class="section-subtitle">A comprehensive breakdown of frameworks, models, data pipelines, and infrastructure tools.</p>
+  <!-- Skills Marquee Banner Strip -->
+  <div class="skills-marquee-container">
+    <div class="skills-marquee-track">
+      <div class="skills-marquee-content">
+        <span>Python</span> <span class="dot">•</span>
+        <span>SQL</span> <span class="dot">•</span>
+        <span>KQL</span> <span class="dot">•</span>
+        <span>Machine Learning</span> <span class="dot">•</span>
+        <span>Deep Learning</span> <span class="dot">•</span>
+        <span>NLP</span> <span class="dot">•</span>
+        <span>RAG</span> <span class="dot">•</span>
+        <span>LLM Fine-tuning</span> <span class="dot">•</span>
+        <span>AI Agents</span> <span class="dot">•</span>
+        <span>PyTorch</span> <span class="dot">•</span>
+        <span>Hugging Face</span> <span class="dot">•</span>
+        <span>LangChain</span> <span class="dot">•</span>
+        <span>LangGraph</span> <span class="dot">•</span>
+        <span>FastAPI</span> <span class="dot">•</span>
+        <span>FAISS</span> <span class="dot">•</span>
+        <span>Docker</span> <span class="dot">•</span>
+        <span>vLLM</span> <span class="dot">•</span>
+        <span>Airflow</span> <span class="dot">•</span>
+        <span>RunPod</span> <span class="dot">•</span>
+        <span>Git</span> <span class="dot">•</span>
+        <span>GitHub</span> <span class="dot">•</span>
+        <span>MongoDB</span> <span class="dot">•</span>
+        <span>Streamlit</span> <span class="dot">•</span>
+        <span>Kaggle</span> <span class="dot">•</span>
       </div>
-
-      <div class="skills-filter">
-        <button class="filter-btn active" data-filter="all">All Skills</button>
-        <button class="filter-btn" data-filter="ml-ai">ML & AI</button>
-        <button class="filter-btn" data-filter="frameworks">Frameworks & Libraries</button>
-        <button class="filter-btn" data-filter="deployment">Deployment & Tools</button>
-        <button class="filter-btn" data-filter="programming">Languages</button>
-      </div>
-
-      <div class="skills-grid">
-        <!-- Card 1 -->
-        <div class="skill-card" data-category="ml-ai">
-          <div class="skill-header">
-            <div class="skill-icon-wrapper"><i class="fa-solid fa-brain"></i></div>
-            <div class="skill-name">LLM Fine-Tuning & SFT</div>
-          </div>
-          <div class="skill-tags">
-            <span class="tag">QLoRA</span>
-            <span class="tag">PEFT</span>
-            <span class="tag">Token Masking (-100)</span>
-            <span class="tag">Hugging Face</span>
-            <span class="tag">Synthetic Instruction Datasets</span>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="skill-card" data-category="ml-ai">
-          <div class="skill-header">
-            <div class="skill-icon-wrapper"><i class="fa-solid fa-network-wired"></i></div>
-            <div class="skill-name">RAG & AI Agents</div>
-          </div>
-          <div class="skill-tags">
-            <span class="tag">LangChain</span>
-            <span class="tag">LangGraph</span>
-            <span class="tag">FAISS</span>
-            <span class="tag">Real-Time Knowledge Sync</span>
-            <span class="tag">Multilingual RAG</span>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="skill-card" data-category="deployment">
-          <div class="skill-header">
-            <div class="skill-icon-wrapper"><i class="fa-solid fa-server"></i></div>
-            <div class="skill-name">High-Throughput Serving</div>
-          </div>
-          <div class="skill-tags">
-            <span class="tag">vLLM</span>
-            <span class="tag">RunPod</span>
-            <span class="tag">Novita AI</span>
-            <span class="tag">Docker</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Linux</span>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="skill-card" data-category="frameworks">
-          <div class="skill-header">
-            <div class="skill-icon-wrapper"><i class="fa-solid fa-database"></i></div>
-            <div class="skill-name">Data Engineering & ETL</div>
-          </div>
-          <div class="skill-tags">
-            <span class="tag">Apache Airflow</span>
-            <span class="tag">Bronze/Silver/Gold Lakehouse</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">Axiom (AQL)</span>
-            <span class="tag">SDV TVAE</span>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="skill-card" data-category="deployment">
-          <div class="skill-header">
-            <div class="skill-icon-wrapper"><i class="fa-solid fa-chart-bar"></i></div>
-            <div class="skill-name">Observability & Load Testing</div>
-          </div>
-          <div class="skill-tags">
-            <span class="tag">Prometheus</span>
-            <span class="tag">Locust (RPS / Latency)</span>
-            <span class="tag">ComfyUI</span>
-            <span class="tag">Stable Diffusion</span>
-            <span class="tag">Automatic1111</span>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="skill-card" data-category="programming">
-          <div class="skill-header">
-            <div class="skill-icon-wrapper"><i class="fa-solid fa-code"></i></div>
-            <div class="skill-name">Programming Languages</div>
-          </div>
-          <div class="skill-tags">
-            <span class="tag">Python (PyTorch, Scikit-learn)</span>
-            <span class="tag">SQL</span>
-            <span class="tag">KQL (Kusto Query Language)</span>
-            <span class="tag">Pydantic</span>
-          </div>
-        </div>
+      <!-- Duplicate content for seamless infinite looping -->
+      <div class="skills-marquee-content" aria-hidden="true">
+        <span>Python</span> <span class="dot">•</span>
+        <span>SQL</span> <span class="dot">•</span>
+        <span>KQL</span> <span class="dot">•</span>
+        <span>Machine Learning</span> <span class="dot">•</span>
+        <span>Deep Learning</span> <span class="dot">•</span>
+        <span>NLP</span> <span class="dot">•</span>
+        <span>RAG</span> <span class="dot">•</span>
+        <span>LLM Fine-tuning</span> <span class="dot">•</span>
+        <span>AI Agents</span> <span class="dot">•</span>
+        <span>PyTorch</span> <span class="dot">•</span>
+        <span>Hugging Face</span> <span class="dot">•</span>
+        <span>LangChain</span> <span class="dot">•</span>
+        <span>LangGraph</span> <span class="dot">•</span>
+        <span>FastAPI</span> <span class="dot">•</span>
+        <span>FAISS</span> <span class="dot">•</span>
+        <span>Docker</span> <span class="dot">•</span>
+        <span>vLLM</span> <span class="dot">•</span>
+        <span>Airflow</span> <span class="dot">•</span>
+        <span>RunPod</span> <span class="dot">•</span>
+        <span>Git</span> <span class="dot">•</span>
+        <span>GitHub</span> <span class="dot">•</span>
+        <span>MongoDB</span> <span class="dot">•</span>
+        <span>Streamlit</span> <span class="dot">•</span>
+        <span>Kaggle</span> <span class="dot">•</span>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Work Experience Section -->
+  <!-- Experience Section -->
   <section id="experience" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Career History</span>
         <h2 class="section-title">Professional Experience</h2>
-        <p class="section-subtitle">Proven track record in deploying production AI models, building scalable ETL pipelines, and optimizing LLM serving.</p>
       </div>
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-node"></div>
-          <div class="timeline-card">
-            <div class="experience-title-row">
-              <div>
-                <h3 class="role-title">AI/ML Engineer</h3>
-                <div class="company-badge"><i class="fa-solid fa-building"></i> 4Way Technologies</div>
-              </div>
-              <span class="timeline-date">Nov 2025 – Present</span>
-            </div>
-
-            <ul class="timeline-bullets">
-              <li><strong>Model Deployment & vLLM Serving:</strong> Containerized and deployed 20+ AI models on cloud GPU platforms (RunPod, Novita AI) utilizing Docker, vLLM, and high-performance FastAPI wrapper services.</li>
-              <li><strong>Data Lake ETL Architecture:</strong> Built enterprise Apache Airflow ETL pipelines following Medallion (Bronze, Silver, Gold) Data Lake architecture, reliably processing over 10K+ records daily.</li>
-              <li><strong>Real-Time Dynamic RAG Chatbot:</strong> Architected a RAG chatbot supporting real-time knowledge vector synchronization, permitting dynamic document ingestion, live updates, and deletions on the fly.</li>
-              <li><strong>Multilingual AI Assistant:</strong> Developed a context-aware multilingual assistant integrated into RAG pipelines for seamless cross-language user support.</li>
-              <li><strong>Load Testing & Telemetry:</strong> Executed API load testing via Locust, continuously monitoring RPS throughput, latency distribution, error rates, and concurrent user performance using Prometheus.</li>
-              <li><strong>Generative Media Workflows:</strong> Engineered Stable Diffusion, ComfyUI, and Automatic1111 automated image generation pipelines, serving 200+ active users.</li>
-            </ul>
+      <div class="experience-card">
+        <div class="exp-header">
+          <div>
+            <h3 class="exp-role">AI/ML Engineer</h3>
+            <div class="exp-company"><i class="fa-solid fa-building"></i> 4Way Technologies</div>
           </div>
+          <div class="exp-period">Nov 2025 – Present</div>
         </div>
+
+        <ul class="exp-bullets">
+          <li><strong>High-Throughput Model Serving:</strong> Deployed 20+ AI models on cloud GPU platforms (RunPod,
+            Novita AI) using Docker, vLLM, and FastAPI.</li>
+          <li><strong>Medallion Data Lake ETL:</strong> Built Apache Airflow ETL pipelines following Bronze, Silver, and
+            Gold data lake architecture, processing 10K+ records daily.</li>
+          <li><strong>Real-Time Dynamic RAG:</strong> Built a RAG-based chatbot with real-time knowledge
+            synchronization, supporting dynamic document ingestion, live updates, and deletions.</li>
+          <li><strong>Multilingual AI Assistant:</strong> Developed a multilingual AI assistant integrated with RAG
+            pipelines for context-aware conversations across multiple languages.</li>
+          <li><strong>Observability & Load Testing:</strong> Performed API load testing using Locust and monitored
+            latency, throughput (RPS), error rates, and concurrent user performance with Prometheus.</li>
+          <li><strong>Generative Media Workflows:</strong> Developed automated image generation workflows using Stable
+            Diffusion, ComfyUI, and Automatic1111, serving 200+ active users.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Featured Projects Section -->
   <section id="projects" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Featured Work</span>
-        <h2 class="section-title">Open-Source & AI Projects</h2>
-        <p class="section-subtitle">Deep dive into custom fine-tuned LLMs, synthetic data generators, and AI agent architectures.</p>
+        <h2 class="section-title">Featured Projects</h2>
+        <a href="https://github.com/Parth-Srivastava-bithub" target="_blank" class="section-link">
+          View all repositories <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
 
       <div class="projects-grid">
-        <!-- Project 1 -->
+        <!-- Project 1: Qwen2.5 LLM Fine-Tuning Pipeline -->
         <div class="project-card">
-          <div class="project-top">
-            <span class="project-badge"><i class="fa-solid fa-fire"></i> HuggingFace Fine-Tune</span>
-            <h3 class="project-title">LLM Fine-Tuning Pipeline (Qwen2.5)</h3>
+          <div class="project-preview">
+            <svg class="preview-graphic" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="140" fill="#F8FAFC" rx="6" />
+              <rect x="25" y="20" width="250" height="100" rx="4" fill="#FFFFFF" stroke="#CBD5E1" />
+              <text x="35" y="38" font-size="9" font-family="sans-serif" fill="#2563EB" font-weight="bold">Qwen2.5 QLoRA Fine-Tuning Loss</text>
+              <line x1="35" y1="45" x2="265" y2="45" stroke="#F1F5F9" />
+              <path d="M45 100 Q 90 95, 120 65 T 200 52 T 255 50" stroke="#2563EB" stroke-width="2" fill="none" />
+              <circle cx="255" cy="50" r="3.5" fill="#1D4ED8" />
+              <rect x="160" y="72" width="105" height="20" rx="3" fill="#EFF6FF" stroke="#BFDBFE" />
+              <text x="212.5" y="85" font-size="8" font-family="monospace" fill="#1D4ED8" text-anchor="middle">Label Mask (-100)</text>
+            </svg>
+          </div>
+
+          <div class="project-body">
+            <div class="project-category">LLM Fine-Tuning & SFT</div>
+            <h3 class="project-title">Qwen2.5 LLM Fine-Tuning Pipeline</h3>
             <p class="project-desc">
-              End-to-end QLoRA and Full Fine-Tuning pipeline targeting Qwen2.5-0.5B on RunPod GPU instances for structured JSON extraction.
+              Fine-tuned Qwen2.5-0.5B using Full Fine-Tuning and QLoRA on RunPod GPUs for structured JSON extraction.
+              Includes 10K+ synthetic instruction dataset and custom label masking (-100).
             </p>
-            
-            <ul class="project-highlights">
-              <li>Created a synthetic instruction dataset of 10K+ training samples.</li>
-              <li>Custom tokenization & prompt label masking (-100) for strict response learning.</li>
-              <li>Iterative progressive dataset cleaning stages (P0, P1) to resolve conflicting samples.</li>
-            </ul>
-          </div>
-
-          <div class="project-tech">
-            <span class="tag">PyTorch</span>
-            <span class="tag">Transformers</span>
-            <span class="tag">PEFT</span>
-            <span class="tag">QLoRA</span>
-            <span class="tag">RunPod</span>
-            <span class="tag">vLLM</span>
-          </div>
-
-          <div class="project-footer">
-            <a href="https://huggingface.co/Yellowforesty/qwen2.5-json-extractor-p0" target="_blank" class="btn btn-primary btn-sm">
-              <i class="fa-solid fa-cube"></i> View on Hugging Face
+            <div class="project-tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">HuggingFace</span>
+              <span class="tag">PEFT</span>
+              <span class="tag">QLoRA</span>
+              <span class="tag">vLLM</span>
+              <span class="tag">RunPod</span>
+            </div>
+            <a href="https://huggingface.co/Yellowforesty/qwen2.5-json-extractor-p0" target="_blank" class="project-link">
+              View HuggingFace Model <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
         </div>
 
-        <!-- Project 2 -->
+        <!-- Project 2: GenData - Synthetic Data Generator -->
         <div class="project-card">
-          <div class="project-top">
-            <span class="project-badge"><i class="fa-solid fa-code-branch"></i> GitHub Project</span>
+          <div class="project-preview">
+            <svg class="preview-graphic" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="140" fill="#FBF9F5" rx="6" />
+              <!-- Workflow Nodes -->
+              <rect x="20" y="25" width="70" height="40" rx="4" fill="#FFFFFF" stroke="#CBD5E1" />
+              <text x="55" y="48" font-size="9.5" font-family="sans-serif" fill="#0F172A" font-weight="bold" text-anchor="middle">LangGraph</text>
+
+              <path d="M90 45 H125" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="3 3" />
+
+              <rect x="125" y="25" width="80" height="40" rx="4" fill="#EFF6FF" stroke="#3B82F6" />
+              <text x="165" y="48" font-size="9" font-family="sans-serif" fill="#2563EB" font-weight="bold" text-anchor="middle">SDV TVAE</text>
+
+              <path d="M205 45 H235" stroke="#3B82F6" stroke-width="1.5" />
+
+              <rect x="235" y="25" width="45" height="40" rx="4" fill="#FFFFFF" stroke="#CBD5E1" />
+              <text x="257.5" y="48" font-size="9" font-family="sans-serif" fill="#10B981" font-weight="bold" text-anchor="middle">Dataset</text>
+
+              <!-- Features & Validation Bar -->
+              <rect x="20" y="80" width="260" height="36" rx="4" fill="#FFFFFF" stroke="#E2E8F0" />
+              <text x="32" y="101" font-size="8" font-family="sans-serif" fill="#64748B">Outlier Preservation • Pydantic Schema</text>
+              
+              <!-- Clean Validated Badge -->
+              <rect x="202" y="88" width="68" height="20" rx="3" fill="#10B981" fill-opacity="0.1" stroke="#10B981" />
+              <circle cx="212" cy="98" r="2.5" fill="#10B981" />
+              <text x="241" y="101" font-size="7.5" font-family="sans-serif" fill="#047857" font-weight="bold" text-anchor="middle">Validated</text>
+            </svg>
+          </div>
+
+          <div class="project-body">
+            <div class="project-category">Autonomous Data Workflows</div>
             <h3 class="project-title">GenData - Synthetic Data Generator</h3>
             <p class="project-desc">
-              Autonomous multi-agent synthetic dataset creation tool driven by LangGraph workflows, Groq LLaMA 70B, and SDV TVAE tabular synthesis.
+              Multi-agent synthetic dataset creation tool driven by LangGraph workflows, Groq LLaMA 70B, and SDV TVAE
+              tabular synthesis with automated EDA and Pydantic validation.
             </p>
-            
-            <ul class="project-highlights">
-              <li>Generates high-fidelity datasets from raw single/multi CSV files.</li>
-              <li>SDV TVAE with validation & automatic retry logic to preserve statistical outliers.</li>
-              <li>Automated EDA extracts statistical correlations to direct synthetic dataset creation.</li>
-              <li>Pydantic schema validation enforcing field constraints, types, and diversity.</li>
-            </ul>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">Groq LLaMA 70B</span>
+              <span class="tag">SDV TVAE</span>
+              <span class="tag">Pydantic</span>
+            </div>
+            <a href="https://github.com/Parth-Srivastava-bithub/GenData" target="_blank" class="project-link">
+              View GitHub Repository <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: Say - Voice-to-Voice AI Agent -->
+        <div class="project-card">
+          <div class="project-preview">
+            <svg class="preview-graphic" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="140" fill="#F8FAFC" rx="6" />
+              <rect x="25" y="20" width="250" height="100" rx="6" fill="#FFFFFF" stroke="#CBD5E1" />
+              <path d="M35 70 Q 45 40, 55 70 T 75 70" stroke="#3B82F6" stroke-width="2" fill="none" />
+              <text x="55" y="95" font-size="8" font-family="sans-serif" fill="#64748B" text-anchor="middle">STT (Sarvam)</text>
+
+              <path d="M85 70 H115" stroke="#3B82F6" stroke-width="1.5" />
+
+              <rect x="115" y="45" width="70" height="48" rx="4" fill="#0F172A" />
+              <text x="150" y="65" font-size="8.5" font-family="sans-serif" fill="#FFFFFF" font-weight="bold" text-anchor="middle">LLaMA 3.3</text>
+              <text x="150" y="77" font-size="7.5" font-family="sans-serif" fill="#38BDF8" text-anchor="middle">70B Agent</text>
+
+              <path d="M185 70 H215" stroke="#3B82F6" stroke-width="1.5" />
+
+              <path d="M215 70 Q 225 100, 235 70 T 255 70" stroke="#2563EB" stroke-width="2" fill="none" />
+              <text x="235" y="95" font-size="8" font-family="sans-serif" fill="#64748B" text-anchor="middle">TTS Synthesis</text>
+
+              <rect x="190" y="26" width="75" height="15" rx="3" fill="#10B981" fill-opacity="0.1" stroke="#10B981" />
+              <text x="227.5" y="36.5" font-size="7.5" font-family="sans-serif" fill="#047857" font-weight="bold" text-anchor="middle">Deployed Railway</text>
+            </svg>
           </div>
 
-          <div class="project-tech">
-            <span class="tag">LangGraph</span>
-            <span class="tag">Groq LLaMA 70B</span>
-            <span class="tag">SDV TVAE</span>
-            <span class="tag">Pydantic</span>
-            <span class="tag">Python</span>
+          <div class="project-body">
+            <div class="project-category">Real-Time Voice AI & Deployment</div>
+            <h3 class="project-title">Say - Voice-to-Voice AI Agent</h3>
+            <p class="project-desc">
+              End-to-end real-time voice-to-voice conversational agent with STT, Groq LLaMA 3.3 70B, and TTS synthesis.
+              Fully containerized with Docker and deployed on Railway.
+            </p>
+            <div class="project-tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Groq LLaMA 3.3</span>
+              <span class="tag">SarvamAI</span>
+              <span class="tag">Railway</span>
+            </div>
+            <a href="https://github.com/Parth-Srivastava-bithub/Say" target="_blank" class="project-link">
+              View GitHub Repository <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: Butterfly (Bitfy CLI) -->
+        <div class="project-card">
+          <div class="project-preview">
+            <svg class="preview-graphic" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="140" fill="#F8FAFC" rx="6" />
+              <rect x="25" y="15" width="250" height="110" rx="6" fill="#0F172A" />
+              <rect x="25" y="15" width="250" height="20" rx="6" fill="#1E293B" />
+              <circle cx="37" cy="25" r="3" fill="#EF4444" />
+              <circle cx="46" cy="25" r="3" fill="#F59E0B" />
+              <circle cx="55" cy="25" r="3" fill="#10B981" />
+              <text x="150" y="28" font-size="8" font-family="monospace" fill="#94A3B8" text-anchor="middle">cmd - bitfy cli</text>
+
+              <text x="35" y="52" font-size="8.5" font-family="monospace" fill="#38BDF8">C:\> bitfy --ask "get system memory"</text>
+              <text x="35" y="68" font-size="8" font-family="monospace" fill="#64748B">> FAISS Vector Search: matched query</text>
+              <text x="35" y="84" font-size="8.5" font-family="monospace" fill="#10B981">Proposed: wmic os get freephysicalmemory</text>
+              <text x="35" y="100" font-size="8" font-family="monospace" fill="#F59E0B">Execute command? [y/N]: y</text>
+            </svg>
           </div>
 
-          <div class="project-footer">
-            <a href="https://github.com/Parth-Srivastava-bithub/GenData" target="_blank" class="btn btn-outline btn-sm">
-              <i class="fa-brands fa-github"></i> GitHub Source Code
+          <div class="project-body">
+            <div class="project-category">Developer Tooling & CLI</div>
+            <h3 class="project-title">Butterfly (Bitfy CLI)</h3>
+            <p class="project-desc">
+              AI-powered command-line assistant converting natural language into safe system commands. Features
+              persistent local FAISS vector memory store and async threading.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Click</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">FAISS</span>
+              <span class="tag">Sentence-Transformers</span>
+            </div>
+            <a href="https://github.com/Parth-Srivastava-bithub/Butterfly" target="_blank" class="project-link">
+              View GitHub Repository <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
         </div>
@@ -350,13 +374,203 @@
     </div>
   </section>
 
-  <!-- Interactive AI Playground -->
+  <!-- Core Skills & Stack Section (Replaces Research & Publications) -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Core Skills & Stack</h2>
+      </div>
+
+      <div class="skills-grid-new">
+        <!-- ML & AI -->
+        <div class="skills-category-card">
+          <div class="cat-header">
+            <div class="cat-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3 class="cat-title">ML & AI</h3>
+          </div>
+          <div class="cat-tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">NLP</span>
+            <span class="tag">RAG</span>
+            <span class="tag">LLM Fine-tuning</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag">Synthetic Data</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Libraries -->
+        <div class="skills-category-card">
+          <div class="cat-header">
+            <div class="cat-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3 class="cat-title">Frameworks & Libraries</h3>
+          </div>
+          <div class="cat-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Hugging Face Transformers</span>
+            <span class="tag">PEFT</span>
+            <span class="tag">LangChain</span>
+            <span class="tag">LangGraph</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">FAISS</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">XGBoost</span>
+            <span class="tag">LightGBM</span>
+          </div>
+        </div>
+
+        <!-- Deployment & Tools -->
+        <div class="skills-category-card">
+          <div class="cat-header">
+            <div class="cat-icon"><i class="fa-solid fa-server"></i></div>
+            <h3 class="cat-title">Deployment & Tools</h3>
+          </div>
+          <div class="cat-tags">
+            <span class="tag">Linux</span>
+            <span class="tag">Docker</span>
+            <span class="tag">vLLM</span>
+            <span class="tag">Apache Airflow</span>
+            <span class="tag">RunPod</span>
+            <span class="tag">Novita AI</span>
+            <span class="tag">Git & GitHub</span>
+            <span class="tag">Prometheus</span>
+            <span class="tag">Locust</span>
+            <span class="tag">Axiom (AQL)</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Jupyter Notebook</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">Kaggle</span>
+          </div>
+        </div>
+
+        <!-- Programming -->
+        <div class="skills-category-card">
+          <div class="cat-header">
+            <div class="cat-icon"><i class="fa-solid fa-code"></i></div>
+            <h3 class="cat-title">Programming</h3>
+          </div>
+          <div class="cat-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">SQL</span>
+            <span class="tag">KQL (Kusto Query Language)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Currently Exploring Section -->
+  <section class="container" id="exploring">
+    <div class="exploring-section">
+      <div class="exploring-grid">
+        <div class="exploring-title">Currently<br>Exploring</div>
+
+        <div class="exploring-items">
+          <div class="exploring-card">
+            <div class="exploring-header">
+              <i class="fa-solid fa-robot exploring-icon"></i>
+              <div class="exploring-name">LLMs & Agents</div>
+            </div>
+            <div class="exploring-desc">Building agentic systems that can reason and act.</div>
+          </div>
+
+          <div class="exploring-card">
+            <div class="exploring-header">
+              <i class="fa-solid fa-database exploring-icon"></i>
+              <div class="exploring-name">RAG Systems</div>
+            </div>
+            <div class="exploring-desc">Improving retrieval, re-ranking and context utilization.</div>
+          </div>
+
+          <div class="exploring-card">
+            <div class="exploring-header">
+              <i class="fa-solid fa-brain exploring-icon"></i>
+              <div class="exploring-name">NLP Research</div>
+            </div>
+            <div class="exploring-desc">Exploring long-context understanding and generation.</div>
+          </div>
+
+          <div class="exploring-card">
+            <div class="exploring-header">
+              <i class="fa-solid fa-code exploring-icon"></i>
+              <div class="exploring-name">Open Source</div>
+            </div>
+            <div class="exploring-desc">Contributing to tools and libraries for the community.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- Sleek Non-photo Portrait Placeholder Graphic -->
+        <div class="about-visual">
+          <div class="about-monogram">PS</div>
+          <div class="about-caption">AI / ML Lab</div>
+        </div>
+
+        <div class="about-text">
+          <p>
+            I'm an AI/ML engineer with a strong interest in Natural Language Processing, Information Retrieval, and
+            building practical AI systems. I love turning research ideas into real-world applications.
+          </p>
+          <p>
+            Currently working at <strong>4Way Technologies</strong>, where I deploy production LLM services using Docker
+            & vLLM, design Airflow Medallion ETL pipelines processing 10K+ daily records, and build real-time vector
+            synchronized RAG applications.
+          </p>
+          <p>
+            When I'm not coding or training models, I'm either reading research papers, lifting, or listening to music.
+          </p>
+          <a href="mailto:parthsrivastava6112004@gmail.com" class="project-link" style="margin-top: 0.5rem;">
+            Know more about me <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Real Key Statistics -->
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div>
+              <div class="stat-number">1+</div>
+              <div class="stat-label">Years of Experience</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon"><i class="fa-solid fa-server"></i></div>
+            <div>
+              <div class="stat-number">20+</div>
+              <div class="stat-label">AI Models Deployed</div>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <div>
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive AI Simulator / Playground -->
   <section id="playground" class="section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Live Demonstration</span>
-        <h2 class="section-title">Interactive AI Simulator</h2>
-        <p class="section-subtitle">Test Parth's Fine-Tuned Qwen2.5 JSON Extractor & LangGraph Synthetic Data Generator in real-time.</p>
+        <h2 class="section-title">Interactive AI Playground</h2>
+        <span class="tag" style="font-size: 0.85rem; padding: 0.3rem 0.8rem;">Live Inference Simulation</span>
       </div>
 
       <div class="playground-container">
@@ -372,76 +586,43 @@
         <!-- RAG / JSON Tab -->
         <div class="playground-body" id="demoRag">
           <div class="demo-box">
-            <div class="box-title"><i class="fa-solid fa-font"></i> Input Unstructured Text</div>
-            <textarea id="inputUnstructured" class="demo-textarea" placeholder="Paste unstructured prompt here...">Meet Parth Srivastava, an AI/ML Engineer based in Ghaziabad. Contact him via phone at +91 8887664156 or email at parthsrivastava6112004@gmail.com. He specializes in vLLM deployments, LangGraph agent workflows, and QLoRA fine-tuning.</textarea>
-            <button id="btnRunJson" class="btn btn-primary">
+            <div class="box-title"><i class="fa-solid fa-font"></i> Input Unstructured Prompt</div>
+            <textarea id="inputUnstructured" class="demo-textarea"
+              placeholder="Paste unstructured prompt here...">Meet Parth Srivastava, an AI/ML Engineer based in Ghaziabad. Contact him via phone at +91 8887664156 or email at parthsrivastava6112004@gmail.com. He specializes in vLLM deployments, LangGraph agent workflows, and QLoRA fine-tuning.</textarea>
+            <button id="btnRunJson" class="btn btn-primary btn-sm" style="align-self: flex-start;">
               <i class="fa-solid fa-play"></i> Extract Structured JSON
             </button>
           </div>
 
           <div class="demo-box">
             <div class="box-title"><i class="fa-solid fa-code"></i> Model Output (Token Masked Response)</div>
-            <pre id="jsonOutput" class="output-pre">// Click "Extract Structured JSON" to simulate model execution...</pre>
+            <pre id="jsonOutput"
+              class="output-pre">// Click "Extract Structured JSON" to simulate model inference...</pre>
           </div>
         </div>
 
         <!-- Synthetic Data Tab -->
         <div class="playground-body" id="demoSynthetic" style="display: none;">
           <div class="demo-box">
-            <div class="box-title"><i class="fa-solid fa-sliders"></i> Schema Configuration</div>
-            <div style="margin-bottom: 12px; color: var(--text-muted); font-size: 0.88rem;">
-              Select record count to generate using LangGraph & SDV TVAE:
+            <div class="box-title"><i class="fa-solid fa-sliders"></i> Batch Configuration</div>
+            <div style="margin-bottom: 12px; color: var(--text-muted); font-size: 0.85rem;">
+              Select record count to generate via LangGraph & SDV TVAE:
             </div>
-            <select id="rowCountSelect" class="demo-textarea" style="height: 48px;">
+            <select id="rowCountSelect" class="demo-textarea" style="height: 48px; margin-bottom: 1rem;">
               <option value="3">3 Synthetic Records (Quick)</option>
               <option value="5" selected>5 Synthetic Records (Standard)</option>
               <option value="10">10 Synthetic Records (Full Batch)</option>
             </select>
-            <button id="btnRunSynth" class="btn btn-primary" style="margin-top: 12px;">
+            <button id="btnRunSynth" class="btn btn-primary btn-sm" style="align-self: flex-start;">
               <i class="fa-solid fa-gears"></i> Generate Synthetic Batch
             </button>
           </div>
 
           <div class="demo-box">
             <div class="box-title"><i class="fa-solid fa-table"></i> Pydantic Validated Output</div>
-            <pre id="synthOutput" class="output-pre">// Select record count and click "Generate Synthetic Batch"...</pre>
+            <pre id="synthOutput"
+              class="output-pre">// Select record count and click "Generate Synthetic Batch"...</pre>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education & Achievements -->
-  <section id="education" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Background & Recognition</span>
-        <h2 class="section-title">Education & Achievements</h2>
-      </div>
-
-      <div class="edu-grid">
-        <div class="info-card">
-          <div class="info-card-header">
-            <div class="info-icon"><i class="fa-solid fa-trophy"></i></div>
-            <h3 style="font-size: 1.1rem; color: white;">Student Leader - Smart India Hackathon (SIH 2025)</h3>
-          </div>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">
-            Led the team in Smart India Hackathon 2025, driving technical architecture, ML solution design, and core decision-making.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <div class="info-card-header">
-            <div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-            <div>
-              <h3 style="font-size: 1.1rem; color: white;">B.Tech in CS & Engineering (Data Science)</h3>
-              <div style="font-size: 0.85rem; color: var(--accent-cyan);">Raj Kumar Goel Institute of Technology</div>
-            </div>
-          </div>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">
-            Aug 2022 – Sep 2026 | Ghaziabad, Uttar Pradesh <br>
-            <strong>CGPA: 7.4</strong>
-          </p>
         </div>
       </div>
     </div>
@@ -449,35 +630,32 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <h3 style="color: white; font-size: 1.3rem; margin-bottom: 6px;">Parth Srivastava</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">AI/ML Engineer • LLM Fine-Tuning & RAG Systems</p>
-        </div>
-
-        <div class="footer-links">
-          <a href="https://github.com/Parth-Srivastava-bithub" target="_blank" class="social-link" title="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/parth-srivastava-dsuser/" target="_blank" class="social-link" title="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
-          </a>
-          <a href="https://huggingface.co/Yellowforesty/qwen2.5-json-extractor-p0" target="_blank" class="social-link" title="HuggingFace">
-            <i class="fa-solid fa-cube"></i>
-          </a>
-          <a href="mailto:parthsrivastava6112004@gmail.com" class="social-link" title="Email">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
+    <div class="container footer-content">
+      <div style="font-size: 0.875rem; color: var(--text-muted);">
+        © 2026 Parth Srivastava
       </div>
 
-      <div class="copyright">
-        &copy; 2026 Parth Srivastava. Built for AI/ML Production & Engineering Excellence.
+      <div class="footer-quote">
+        "Research is to see what everybody else has seen, and to think what nobody else has thought." – Albert
+        Szent-Györgyi
+      </div>
+
+      <div class="footer-right">
+        <a href="https://github.com/Parth-Srivastava-bithub" target="_blank" style="color: var(--text-muted);"><i
+            class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/parth-srivastava-dsuser/" target="_blank"
+          style="color: var(--text-muted);"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="mailto:parthsrivastava6112004@gmail.com" style="color: var(--text-muted);"><i
+            class="fa-solid fa-envelope"></i></a>
+        <a href="#home" class="back-to-top" title="Back to top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
       </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="app.js"></script>
 </body>
+
 </html>

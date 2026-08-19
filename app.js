@@ -1,145 +1,238 @@
-// Parth Srivastava Portfolio Application JavaScript
+// Parth Srivastava - AI/ML Engineer & Researcher Portfolio Application JS
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTerminal();
-  initSkillsFilter();
+  initNetworkCanvas();
+  initNavHighlighting();
   initPlayground();
-  initCopyButtons();
+  initThemeToggle();
 });
 
-/* -------------------------------------------------------------
- * 1. INTERACTIVE TERMINAL SIMULATOR
- * ------------------------------------------------------------- */
-function initTerminal() {
-  const terminalBody = document.getElementById('terminalBody');
-  const chipButtons = document.querySelectorAll('.cmd-chip');
+/* --------------------------------------------------------------------------
+   1. Dynamic Abstract AI Network Canvas Visualization
+   -------------------------------------------------------------------------- */
+function initNetworkCanvas() {
+  const canvas = document.getElementById('networkCanvas');
+  if (!canvas) return;
 
-  if (!terminalBody) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const particleCount = 45;
+  const maxDistance = 110;
 
-  const commands = {
-    'fetch-profile': () => {
-      return `[SYSTEM LOG] Fetching profile data for Parth Srivastava...
-Name: Parth Srivastava
-Role: AI/ML Engineer
-Location: Ghaziabad, UP, India
-Core Focus: LLM Fine-Tuning (QLoRA), RAG Pipelines, AI Agents, vLLM Deployment
-Current Company: 4Way Technologies (Nov 2025 – Present)`;
-    },
-    'run-rag': () => {
-      return `[RAG ENGINE] Initializing Knowledge Vector Store (FAISS + LangChain)...
-> Loading document chunks... 1,420 chunks loaded.
-> Dynamic Sync status: ONLINE (Syncing real-time edits, ingest & delete)
-> Query: "What models has Parth deployed?"
-> Context matched: Deployed 20+ AI models on RunPod & Novita using Docker, vLLM, and FastAPI.
-> Answer generated in 142ms.`;
-    },
-    'fine-tune': () => {
-      return `[QLoRA TRAINING LOG] Model: Qwen2.5-0.5B | Dataset: 10K+ Instruction Samples
-> Epoch 1/3 - Loss: 1.452 - Token Masking (-100) Active on Prompt
-> Epoch 2/3 - Loss: 0.381 - Validation Accuracy: 98.4%
-> Epoch 3/3 - Loss: 0.092 - JSON Schema Extraction Precision: 99.2%
-> Model weights saved to HuggingFace Hub: Yellowforesty/qwen2.5-json-extractor-p0`;
-    },
-    'synthetic-data': () => {
-      return `[LANGGRAPH WORKFLOW] Initializing Synthetic Data Pipeline...
-> Agent 1: Categorizing features & running Automated EDA
-> Agent 2: Executing SDV TVAE Generator with validation retries
-> Agent 3: Pydantic Schema Validation passed (0 type violations)
-> Generated 10,000 synthetic rows with outlier preservation.`;
-    },
-    'metrics': () => {
-      return `[PROMETHEUS METRICS SUMMARY]
-> Total Models Deployed: 20+
-> Daily ETL Pipeline Records: 10,000+
-> Active Image Gen Users (ComfyUI/SD): 200+
-> Average API Latency: 48ms
-> Max RPS Load Tested: 1,500 RPS via Locust`;
-    },
-    'clear': () => {
-      terminalBody.innerHTML = `
-        <div class="terminal-line"><span class="terminal-prompt">parth@ai-workstation:~$</span> Terminal cleared. Type or click commands below.</div>
-      `;
-      return null;
-    }
-  };
-
-  chipButtons.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const cmdName = chip.getAttribute('data-cmd');
-      executeCommand(cmdName);
-    });
-  });
-
-  function executeCommand(cmdName) {
-    const fn = commands[cmdName];
-    if (!fn) return;
-
-    // Append Command
-    const cmdLine = document.createElement('div');
-    cmdLine.className = 'terminal-line';
-    cmdLine.innerHTML = `<span class="terminal-prompt">parth@ai-workstation:~$</span> <span class="terminal-cmd">${cmdName}</span>`;
-    terminalBody.appendChild(cmdLine);
-
-    const resultText = fn();
-    if (resultText) {
-      const outputLine = document.createElement('div');
-      outputLine.className = 'terminal-output';
-      outputLine.innerHTML = resultText.replace(/\n/g, '<br>');
-      terminalBody.appendChild(outputLine);
-    }
-
-    terminalBody.scrollTop = terminalBody.scrollHeight;
+  function resize() {
+    const parent = canvas.parentElement;
+    width = canvas.width = parent.clientWidth;
+    height = canvas.height = parent.clientHeight;
   }
+
+  window.addEventListener('resize', () => {
+    resize();
+    createParticles();
+  });
+
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        radius: Math.random() * 2.5 + 1.5,
+        color: i % 3 === 0 ? '#2563EB' : (i % 2 === 0 ? '#3B82F6' : '#93C5FD')
+      });
+    }
+  }
+
+  // Track mouse
+  let mouse = { x: null, y: null };
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  canvas.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw wavy background mesh grid
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(219, 234, 254, 0.4)';
+    ctx.lineWidth = 1;
+    for (let i = 0; i < width; i += 35) {
+      ctx.moveTo(i, 0);
+      ctx.lineTo(i, height);
+    }
+    for (let j = 0; j < height; j += 35) {
+      ctx.moveTo(0, j);
+      ctx.lineTo(width, j);
+    }
+    ctx.stroke();
+
+    // Update and draw particles
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      // Draw particle node
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = 'rgba(37, 99, 235, 0.5)';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Connect near particles
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < maxDistance) {
+          const alpha = (1 - dist / maxDistance) * 0.45;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+
+      // Connect to mouse cursor
+      if (mouse.x && mouse.y) {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(29, 78, 216, ${0.5 * (1 - dist / 130)})`;
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  resize();
+  createParticles();
+  animate();
 }
 
-/* -------------------------------------------------------------
- * 2. SKILLS FILTERING
- * ------------------------------------------------------------- */
-function initSkillsFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const skillCards = document.querySelectorAll('.skill-card');
+/* --------------------------------------------------------------------------
+   2. Navbar Scroll Highlight & Active Indicator
+   -------------------------------------------------------------------------- */
+function initNavHighlighting() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const indicator = document.querySelector('.nav-indicator');
+  const navMenu = document.querySelector('.nav-menu');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  function updateIndicator(activeLink) {
+    if (!indicator || !activeLink || !navMenu) return;
+    const linkRect = activeLink.getBoundingClientRect();
+    const menuRect = navMenu.getBoundingClientRect();
 
-      const filter = btn.getAttribute('data-filter');
+    const left = linkRect.left - menuRect.left;
+    const width = linkRect.width;
 
-      skillCards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+    indicator.style.transform = `translateX(${left}px)`;
+    indicator.style.width = `${width}px`;
+    indicator.style.opacity = '1';
+  }
+
+  function setActive() {
+    let current = '';
+    const scrollPos = window.scrollY + 120;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    let activeLink = null;
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+        activeLink = link;
+      }
+    });
+
+    if (!activeLink && navLinks.length > 0) {
+      activeLink = navLinks[0];
+      activeLink.classList.add('active');
+    }
+
+    if (activeLink) {
+      updateIndicator(activeLink);
+    }
+  }
+
+  // Handle immediate click transition
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      updateIndicator(link);
     });
   });
+
+  window.addEventListener('scroll', setActive);
+  window.addEventListener('resize', () => {
+    const active = document.querySelector('.nav-link.active');
+    if (active) updateIndicator(active);
+  });
+
+  // Initial calculation
+  setTimeout(setActive, 100);
 }
 
-/* -------------------------------------------------------------
- * 3. INTERACTIVE PLAYGROUND SIMULATORS
- * ------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   3. Interactive AI Playground
+   -------------------------------------------------------------------------- */
 function initPlayground() {
   const tabBtns = document.querySelectorAll('.tab-btn');
   const demoRag = document.getElementById('demoRag');
   const demoSynthetic = document.getElementById('demoSynthetic');
 
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  if (tabBtns.length > 0) {
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-      const tab = btn.getAttribute('data-tab');
-      if (tab === 'rag') {
-        demoRag.style.display = 'grid';
-        demoSynthetic.style.display = 'none';
-      } else {
-        demoRag.style.display = 'none';
-        demoSynthetic.style.display = 'grid';
-      }
+        const tab = btn.getAttribute('data-tab');
+        if (tab === 'rag') {
+          demoRag.style.display = 'grid';
+          demoSynthetic.style.display = 'none';
+        } else {
+          demoRag.style.display = 'none';
+          demoSynthetic.style.display = 'grid';
+        }
+      });
     });
-  });
+  }
 
   // JSON Extractor Runner
   const btnRunJson = document.getElementById('btnRunJson');
@@ -149,12 +242,12 @@ function initPlayground() {
   if (btnRunJson) {
     btnRunJson.addEventListener('click', () => {
       const text = inputUnstructured.value.trim();
-      jsonOutput.innerHTML = `// [Qwen2.5-0.5B-JSON-Extractor] Processing prompt...\n// Applying token mask (-100) to prompt context...`;
-      
+      jsonOutput.innerHTML = `// [Qwen2.5-0.5B-JSON-Extractor] Initializing model inference...\n// Masking prompt tokens (-100)...`;
+
       setTimeout(() => {
         const extracted = parseTextToJSON(text);
         jsonOutput.innerHTML = JSON.stringify(extracted, null, 2);
-      }, 600);
+      }, 500);
     });
   }
 
@@ -166,30 +259,29 @@ function initPlayground() {
   if (btnRunSynth) {
     btnRunSynth.addEventListener('click', () => {
       const count = parseInt(rowCountSelect.value || '3', 10);
-      synthOutput.innerHTML = `// [LangGraph + SDV TVAE] Analyzing statistical distributions & correlation matrix...\n// Running Pydantic schema validation...`;
+      synthOutput.innerHTML = `// [LangGraph + SDV TVAE] Executing tabular data synthesis workflow...\n// Validating Pydantic schema...`;
 
       setTimeout(() => {
         const syntheticBatch = generateSyntheticData(count);
         synthOutput.innerHTML = JSON.stringify(syntheticBatch, null, 2);
-      }, 700);
+      }, 600);
     });
   }
 }
 
 function parseTextToJSON(text) {
-  // Simple NLP/regex heuristic simulation for the live demo
   const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
   const phoneMatch = text.match(/[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}/);
 
   return {
-    "model_version": "qwen2.5-0.5b-json-extractor-p0",
+    "model_name": "qwen2.5-0.5b-json-extractor-p0",
     "status": "SUCCESS",
     "extracted_entities": {
-      "name": text.toLowerCase().includes("parth") ? "Parth Srivastava" : "Extracted Subject",
+      "name": text.toLowerCase().includes("parth") ? "Parth Srivastava" : "Extracted Entity",
       "email": emailMatch ? emailMatch[0] : "parthsrivastava6112004@gmail.com",
       "phone": phoneMatch ? phoneMatch[0] : "+91 8887664156",
-      "skills_detected": ["RAG", "vLLM", "Docker", "LangGraph", "Fine-Tuning"],
-      "confidence_score": 0.994
+      "specialization": ["vLLM Deployment", "RAG Systems", "QLoRA Fine-Tuning"],
+      "confidence": 0.996
     },
     "token_masking_applied": true
   };
@@ -197,40 +289,50 @@ function parseTextToJSON(text) {
 
 function generateSyntheticData(rows) {
   const result = [];
-  const roles = ["AI Engineer", "Data Scientist", "MLOps Architect", "NLP Specialist"];
-  
+  const roles = ["AI/ML Engineer", "NLP Researcher", "MLOps Architect", "Data Scientist"];
+
   for (let i = 0; i < rows; i++) {
     result.push({
-      "user_id": `SYNTH-${1000 + i}`,
+      "user_id": `SYNTH-${2000 + i}`,
       "role": roles[i % roles.length],
-      "model_latency_ms": Math.floor(Math.random() * 45) + 15,
-      "daily_queries": Math.floor(Math.random() * 500) + 100,
-      "pydantic_schema_valid": true
+      "model_latency_ms": Math.floor(Math.random() * 35) + 12,
+      "query_throughput_rps": Math.floor(Math.random() * 400) + 150,
+      "pydantic_valid": true
     });
   }
   return {
-    "generator": "LangGraph + Groq LLaMA 70B + SDV TVAE",
-    "record_count": rows,
-    "outliers_preserved": true,
+    "workflow": "LangGraph + Groq LLaMA 70B + SDV TVAE",
+    "generated_rows": rows,
+    "outlier_preservation": "HIGH",
     "dataset": result
   };
 }
 
-/* -------------------------------------------------------------
- * 4. COPY TO CLIPBOARD
- * ------------------------------------------------------------- */
-function initCopyButtons() {
-  const copyBtn = document.getElementById('copyEmailBtn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const email = 'parthsrivastava6112004@gmail.com';
-      navigator.clipboard.writeText(email).then(() => {
-        const originalText = copyBtn.innerText;
-        copyBtn.innerText = 'Copied!';
-        setTimeout(() => {
-          copyBtn.innerText = originalText;
-        }, 2000);
-      });
-    });
+/* --------------------------------------------------------------------------
+   4. Theme Toggle & Persistence
+   -------------------------------------------------------------------------- */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('themeToggleBtn');
+  if (!toggleBtn) return;
+  const icon = toggleBtn.querySelector('i');
+
+  // Load saved theme from localStorage
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (icon) icon.className = 'fa-solid fa-sun';
+  } else {
+    if (icon) icon.className = 'fa-regular fa-moon';
   }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+
+    if (icon) {
+      icon.className = isDark ? 'fa-solid fa-sun' : 'fa-regular fa-moon';
+    }
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
 }
