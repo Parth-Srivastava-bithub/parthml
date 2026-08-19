@@ -47,17 +47,66 @@ function initNetworkCanvas() {
     }
   }
 
-  // Track mouse
-  let mouse = { x: null, y: null };
-  canvas.addEventListener('mousemove', (e) => {
+  // Track mouse & mobile touch interaction
+  let mouse = { x: null, y: null, isTouch: false, touchTimer: null };
+
+  function setInputPosition(clientX, clientY, isTouch = false) {
     const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+    mouse.x = clientX - rect.left;
+    mouse.y = clientY - rect.top;
+    mouse.isTouch = isTouch;
+
+    if (isTouch) {
+      // Gently pull nearby particles toward tap location
+      attractParticlesTo(mouse.x, mouse.y);
+
+      clearTimeout(mouse.touchTimer);
+      mouse.touchTimer = setTimeout(() => {
+        mouse.x = null;
+        mouse.y = null;
+        mouse.isTouch = false;
+      }, 1800);
+    }
+  }
+
+  function attractParticlesTo(tx, ty) {
+    if (!tx || !ty) return;
+    particles.forEach(p => {
+      const dx = tx - p.x;
+      const dy = ty - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 220 && dist > 5) {
+        p.vx += (dx / dist) * 0.45;
+        p.vy += (dy / dist) * 0.45;
+      }
+    });
+  }
+
+  // Desktop & Mobile Event Listeners
+  const heroSection = document.getElementById('home');
+  const activeTarget = heroSection || canvas.parentElement;
+
+  activeTarget.addEventListener('mousemove', (e) => {
+    setInputPosition(e.clientX, e.clientY, false);
   });
-  canvas.addEventListener('mouseleave', () => {
+
+  activeTarget.addEventListener('mouseleave', () => {
     mouse.x = null;
     mouse.y = null;
   });
+
+  // Mobile Touch Support
+  activeTarget.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches[0]) {
+      setInputPosition(e.touches[0].clientX, e.touches[0].clientY, true);
+    }
+  }, { passive: true });
+
+  activeTarget.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      setInputPosition(e.touches[0].clientX, e.touches[0].clientY, true);
+    }
+  }, { passive: true });
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
@@ -82,6 +131,18 @@ function initNetworkCanvas() {
 
       p.x += p.vx;
       p.y += p.vy;
+
+      // Maintain continuous ambient floating movement (never stops)
+      const currentSpeed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+      if (currentSpeed < 0.4) {
+        const angle = Math.atan2(p.vy, p.vx) || (Math.random() * Math.PI * 2);
+        p.vx = Math.cos(angle) * 0.65;
+        p.vy = Math.sin(angle) * 0.65;
+      } else if (currentSpeed > 2.2) {
+        // Smoothly ease high tap speed back down to floating speed
+        p.vx *= 0.96;
+        p.vy *= 0.96;
+      }
 
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
@@ -113,20 +174,34 @@ function initNetworkCanvas() {
         }
       }
 
-      // Connect to mouse cursor
-      if (mouse.x && mouse.y) {
+      // Connect to mouse or touch location
+      if (mouse.x !== null && mouse.y !== null) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 130) {
+        const maxReach = mouse.isTouch ? 240 : 135;
+
+        if (dist < maxReach) {
+          const alpha = (1 - dist / maxReach) * (mouse.isTouch ? 0.75 : 0.5);
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(29, 78, 216, ${0.5 * (1 - dist / 130)})`;
-          ctx.lineWidth = 1.2;
+          ctx.strokeStyle = mouse.isTouch ? `rgba(37, 99, 235, ${alpha})` : `rgba(29, 78, 216, ${alpha})`;
+          ctx.lineWidth = mouse.isTouch ? 1.5 : 1.2;
           ctx.stroke();
         }
       }
+    }
+
+    // Draw glowing touch pulse dot on mobile tap
+    if (mouse.x !== null && mouse.y !== null && mouse.isTouch) {
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 6, 0, Math.PI * 2);
+      ctx.fillStyle = '#2563EB';
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = '#3B82F6';
+      ctx.fill();
+      ctx.shadowBlur = 0;
     }
 
     requestAnimationFrame(animate);
