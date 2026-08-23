@@ -679,6 +679,38 @@ button {
   box-shadow: var(--shadow-sm);
 }
 
+.project-card.featured-card,
+.projects-grid .featured-card {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1.05fr 0.95fr !important;
+  align-items: stretch !important;
+}
+
+.project-card.featured-card .project-preview,
+.projects-grid .featured-card .project-preview {
+  height: 100% !important;
+  min-height: 230px !important;
+  border-bottom: none !important;
+  border-right: 1px solid var(--border-light) !important;
+}
+
+@media (max-width: 992px) {
+  .project-card.featured-card,
+  .projects-grid .featured-card {
+    grid-column: 1 / -1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .project-card.featured-card .project-preview,
+  .projects-grid .featured-card .project-preview {
+    height: 180px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-light) !important;
+  }
+}
+
 .project-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
