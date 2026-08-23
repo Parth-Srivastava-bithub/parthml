@@ -111,9 +111,11 @@ function initNetworkCanvas() {
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
+    const isDark = document.body.classList.contains('dark-mode');
+
     // Draw wavy background mesh grid
     ctx.beginPath();
-    ctx.strokeStyle = 'rgba(219, 234, 254, 0.4)';
+    ctx.strokeStyle = isDark ? 'rgba(148, 163, 184, 0.22)' : 'rgba(219, 234, 254, 0.4)';
     ctx.lineWidth = 1;
     for (let i = 0; i < width; i += 35) {
       ctx.moveTo(i, 0);
@@ -150,9 +152,11 @@ function initNetworkCanvas() {
       // Draw particle node
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = 'rgba(37, 99, 235, 0.5)';
+      ctx.fillStyle = isDark 
+        ? (p.color === '#2563EB' ? '#60A5FA' : (p.color === '#3B82F6' ? '#93C5FD' : '#E0F2FE'))
+        : p.color;
+      ctx.shadowBlur = isDark ? 10 : 8;
+      ctx.shadowColor = isDark ? 'rgba(96, 165, 250, 0.75)' : 'rgba(37, 99, 235, 0.5)';
       ctx.fill();
       ctx.shadowBlur = 0;
 
@@ -164,12 +168,15 @@ function initNetworkCanvas() {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < maxDistance) {
-          const alpha = (1 - dist / maxDistance) * 0.45;
+          const rawAlpha = (1 - dist / maxDistance);
+          const alpha = isDark ? rawAlpha * 0.75 : rawAlpha * 0.45;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
-          ctx.lineWidth = 1;
+          ctx.strokeStyle = isDark 
+            ? `rgba(96, 165, 250, ${alpha})` 
+            : `rgba(37, 99, 235, ${alpha})`;
+          ctx.lineWidth = isDark ? 1.25 : 1;
           ctx.stroke();
         }
       }
@@ -182,12 +189,15 @@ function initNetworkCanvas() {
         const maxReach = mouse.isTouch ? 240 : 135;
 
         if (dist < maxReach) {
-          const alpha = (1 - dist / maxReach) * (mouse.isTouch ? 0.75 : 0.5);
+          const rawAlpha = (1 - dist / maxReach);
+          const alpha = mouse.isTouch ? rawAlpha * 0.85 : (isDark ? rawAlpha * 0.75 : rawAlpha * 0.5);
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = mouse.isTouch ? `rgba(37, 99, 235, ${alpha})` : `rgba(29, 78, 216, ${alpha})`;
-          ctx.lineWidth = mouse.isTouch ? 1.5 : 1.2;
+          ctx.strokeStyle = isDark
+            ? `rgba(147, 197, 253, ${alpha})`
+            : (mouse.isTouch ? `rgba(37, 99, 235, ${alpha})` : `rgba(29, 78, 216, ${alpha})`);
+          ctx.lineWidth = isDark ? 1.5 : (mouse.isTouch ? 1.5 : 1.2);
           ctx.stroke();
         }
       }
@@ -197,9 +207,9 @@ function initNetworkCanvas() {
     if (mouse.x !== null && mouse.y !== null && mouse.isTouch) {
       ctx.beginPath();
       ctx.arc(mouse.x, mouse.y, 6, 0, Math.PI * 2);
-      ctx.fillStyle = '#2563EB';
+      ctx.fillStyle = isDark ? '#60A5FA' : '#2563EB';
       ctx.shadowBlur = 12;
-      ctx.shadowColor = '#3B82F6';
+      ctx.shadowColor = isDark ? '#93C5FD' : '#3B82F6';
       ctx.fill();
       ctx.shadowBlur = 0;
     }
